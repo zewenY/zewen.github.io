@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo">
-    <meta name="description" content="你好">
+    <meta name="description" content="关于用STLINK无法给单片机下载程序的解决方案​	今天用STLINK给STM32F103C6T6最小系统板下载程序时，先将STLINK与单片机连接起来，使用的是SW的方式，所以需要将两端的SWCLK、SWDIO、GND、VCC连接起来。连">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -375,7 +375,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-08-20
                 </div>
                 
 
@@ -396,7 +396,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="你好"><a href="#你好" class="headerlink" title="你好"></a>你好</h1>
+                <h1 id="关于用STLINK无法给单片机下载程序的解决方案"><a href="#关于用STLINK无法给单片机下载程序的解决方案" class="headerlink" title="关于用STLINK无法给单片机下载程序的解决方案"></a>关于用STLINK无法给单片机下载程序的解决方案</h1><p>​	今天用STLINK给STM32F103C6T6最小系统板下载程序时，先将STLINK与单片机连接起来，使用的是SW的方式，所以需要将两端的SWCLK、SWDIO、GND、VCC连接起来。连接完后发现通过这样的连接方式也能够给板子供上电，但是这个板子有USB的供电口，苦于没有USB线就打算先这样，反正板子也已经供上电了。但是当我打开KEIL下载程序时，发现在keil中的Debug的Setting中能够识别芯片内核，但就是一下载程序就显示Internal command error,当时就很懵逼，在网上查了不少资料，包括复位啊什么的，都试过都不太管用。最后查资料发现，在STLINK的接口处有两个VCC的口，一个是供电用的，另一个好像是检测板子的电源用的，具体是干嘛的我也不太清楚，但当我把这两根都接上后，程序就能成功的下进去了。</p>
+<p>​	后期查了一下这相关的材料,发现在STLINK的一号接口VCC，这不是单纯的VCC接口，在STLINK的官方文件中明确指出该接口是Target VCC，这个口并不是用来给单片机供电的，而是用来检测单片机的IO口供电电压是多少的，是在SW协议里必须要用到的，因此如果你还想供电的话，这两根VCC都要接，补充一下，我说的这两根其中还有一根就是另一根叫VCC的那个管教。</p>
+
                 
             </div>
             <hr/>
@@ -422,7 +424,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2023/08/07/Xbotpark%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B8%AD%E6%9C%9F%E6%B1%87%E6%8A%A5%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%9B%E5%BA%A6%E6%A2%B3%E7%90%86/">http://example.com/2023/08/07/Xbotpark%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B8%AD%E6%9C%9F%E6%B1%87%E6%8A%A5%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%9B%E5%BA%A6%E6%A2%B3%E7%90%86/</a>
+                    <a href="http://example.com/2023/08/20/STLINK%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">http://example.com/2023/08/20/STLINK%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,7 +543,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2023/08/07/Xbotpark%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B8%AD%E6%9C%9F%E6%B1%87%E6%8A%A5%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%9B%E5%BA%A6%E6%A2%B3%E7%90%86/">
+                <a href="/2023/08/20/STLINK%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
                     <div class="card-image">
                         
                         
@@ -558,7 +560,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
                             </span>
                         <span class="publish-author">
                             
@@ -579,7 +581,7 @@
                 Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/07/Xbotpark%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B8%AD%E6%9C%9F%E6%B1%87%E6%8A%A5%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%9B%E5%BA%A6%E6%A2%B3%E7%90%86/">
+                <a href="/2023/08/20/STLINK%E4%B8%8B%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
                     <div class="card-image">
                         
                         
@@ -596,7 +598,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-20
                             </span>
                         <span class="publish-author">
                             
